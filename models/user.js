@@ -10,12 +10,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    name: {
+    fname: {
         type: String,
         required: true
-    }, 
-    timestamps: true
-});
+    },
+    lname: {
+        type: String,
+        required: true
+    } 
+},
+{timestamps: true}          //this will add timestamps like createdAt, updatedAt,etc.
+);
 
 
 const User = mongoose.model('user', userSchema);

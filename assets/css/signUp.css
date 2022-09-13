@@ -7,7 +7,7 @@ h1{
     color: white;
 }
 form{
-    background:linear-gradient(lightgrey, lightyellow);
+    background:linear-gradient(lightpink, lightyellow);
 }
 #signup-form{
     padding-top: 50px;
