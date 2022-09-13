@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/css/login.css">
+
+<h1>Login Page</h1>
+
+<form action="/users/create-session" method="POST">
+    <div id="login-form">
+        <div>
+            <input type="email" name="email" placeholder="Enter Email" required>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Enter Password" required>
+        </div>
+    </div>
+    <button type="submit" value="login" id="login-btn">Login</button>
+</form>

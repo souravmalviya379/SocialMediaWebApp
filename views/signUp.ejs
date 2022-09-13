@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="/css/signUp.css">
+
+<h1>SignUp Page</h1>
+<form action="users/create" method="POST">
+    <div id="signup-form">
+        <div>
+            <input type="text" name="fname" placeholder="Enter First name" required>
+        </div>
+        <div>
+            <input type="text" name="lname" placeholder="Enter Last name" required>
+        </div>
+        <div>
+            <input type="email" name="email" placeholder="Enter Email" required>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Enter Password" required>
+        </div>
+        <div>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        </div>
+    </div>
+    <button type="submit" value="signup" id="signup-btn">Sign Up</button>
+</form>

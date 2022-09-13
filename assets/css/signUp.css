@@ -1,0 +1,45 @@
+h1{
+    font-size: 3rem;
+    text-align: center;
+    background-color: purple;
+    padding: 10px;
+    margin-bottom: 0;
+    color: white;
+}
+form{
+    background:linear-gradient(lightgrey, lightyellow);
+}
+#signup-form{
+    padding-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#signup-form div input{
+    padding: 5px;
+    display: block;
+    width: 60vw;
+    height: 3rem;
+    font-size: 1.2rem;
+    color: rgb(104, 104, 104);
+    margin-bottom: 5px;
+    border:none;
+    border-bottom: 1px solid rgb(231, 230, 230);
+}
+
+#signup-form div input:focus{
+    outline: none;
+}
+
+#signup-btn{
+    display: block;
+    background-color: rgb(75, 74, 74);
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 10rem;
+    height: 3rem;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
