@@ -1,0 +1,35 @@
+
+
+<!--
+    Layout is just like a template.
+    If we are using express ejs layouts then all the routes will render this layout file only and will give error if layout.ejs file is not present in views
+
+    ejs engine will replace the body keyword variable used in layout page with the content of the files which are rendered while routing.
+
+    Ex. if users_controller controller is rendering profile page, then the body keyword here will be replaced with al the contents of profile page.
+-->
+
+              <!-- this include is used to include the content of other ejs file in the current rendering page. and this method is known as partials  -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('_header') %>
+
+    <%- body %>
+
+    <%- include('_footer') %>
+
+</body>
+</html>
