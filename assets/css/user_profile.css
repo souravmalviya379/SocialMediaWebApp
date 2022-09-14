@@ -1,4 +1,18 @@
+#nav{
+    font-size: 1.3rem;
+    direction: rtl;
+    margin-right: 20px;
+}
+
 h1{
-    color: purple;
-    background-color: lightgrey;
+    background-color: purple;
+    color: white;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#user-info{
+    background:linear-gradient(lightblue, rgb(248, 204, 211));
+    font-size: 1.4rem;
+    padding: 15px;
 }

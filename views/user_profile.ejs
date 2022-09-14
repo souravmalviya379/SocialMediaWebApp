@@ -1,4 +1,11 @@
+<link rel="stylesheet" href="/css/user_profile.css">
 
-    <link rel="stylesheet" href="/css/user_profile.css">
-    <h1>My Profile</h1>
+<nav id="nav">
+    <a href="/users/sign-out">Sign Out</a>
+</nav>
+<h1>My Profile</h1>
 
+<div id="user-info">
+    <p>Name : <%= user.fname %></p>
+    <p>Email : <%= user.email %></p>
+</div>
