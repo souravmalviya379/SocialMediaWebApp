@@ -7,12 +7,20 @@ module.exports.profile = function(req, res){
 }
 
 module.exports.signUp = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile')
+    }
+
     return res.render('signUp', {
         title: "Sign Up Page"
     });
 }
 
 module.exports.login = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile')
+    }
+
     return res.render('login', {
         title: 'Login Page'
     });
@@ -41,9 +49,13 @@ module.exports.create = function(req, res){
 
 //get the login data    
 module.exports.create_session = function(req, res){
-    //to do later
+    return res.redirect('/');
 }
 
-module.exports.posts = function(req, res){
-    return res.end('<h1>See the following posts</h1>');
+//sign-out
+module.exports.destroySession = function(){
+    req.logout();   //passport will call this method
+
+    return res.redirect('/');
+
 }
