@@ -1,15 +1,42 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %> | SocialApp</title>
-</head>
-<body> -->
+<h1>Welcome to SocialApp</h1>
 
-    <h1>Welcome to SocialApp</h1>
-    
+<section id="feed-posts">
+    <h4>Posts</h4>
+    <% if(locals.user){ %>
+    <form action="/posts/create" id="new-post-form" method="POST">
+        <textarea name="content" cols="30" rows="3" placeholder="Type Here......"></textarea>
+        <input type="submit" value="Post">
+    </form>
+    <% } %>
+    <div id="posts-display">
+        <ul>
+            <% for(let post of posts){ %>
+                <li>
+                    <small>
+                        <%= post.user.fname %>
+                    </small>
+                    <p>
+                        <%= post.content %>
+                    </p>
+                </li>    
+            <% } %>
+        </ul>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- 
 </body>
 </html>   after studying layouts no need of this html containers just write body part in this files which will be replaced by body in layout page-->
