@@ -4,7 +4,9 @@ const passport = require('passport');
 
 const usersController = require('../controllers/users_controller');
     //if user is authenticated then only it profile page will be renderd
-router.get('/profile',passport.checkAuthentication, usersController.profile);
+router.get('/profile/:id',passport.checkAuthentication, usersController.profile);
+router.post('/update/:id', passport.checkAuthentication, usersController.update)
+
 router.get('/sign-up', usersController.signUp);
 router.get('/login', usersController.login);
 

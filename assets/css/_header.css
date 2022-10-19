@@ -1,28 +1,24 @@
-nav{
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    background-color: rgb(60, 137, 237);
-    padding: 0 10px;
-    box-sizing: border-box;
-    height: 3rem;
-}
-nav h2{
+nav {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  background-color: #3c89ed;
+  padding: 0 10px;
+  box-sizing: border-box;
+  height: 3rem; }
+  nav h2 {
     display: inline-block;
-    margin-top: 10px;
-}
-nav ul{
+    margin-top: 10px; }
+  nav ul {
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
-}
+    margin-top: 10px; }
 
-ul li{
-    list-style: none;
-    font-size: 1.2rem;
-    margin-left: 15px;
-}
-ul li a{
-    text-decoration: none;
-    color: white;
-}
+ul li {
+  list-style: none;
+  font-size: 1.2rem;
+  margin-left: 15px; }
+
+ul li a {
+  text-decoration: none;
+  color: white; }
