@@ -15,6 +15,7 @@ module.exports.create = async function (req, res) {
             post.comments.push(comment);
             post.save();        //it is necessary to tell the mongodb to save the changes
 
+            req.flash('success', 'Comment added !!');
             return res.redirect('/');
         }
     } catch (err) {
@@ -31,6 +32,8 @@ module.exports.destroy = function (req, res) {
             comment.remove();
             //removing comment reference from post (comment array in post)
             Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id } }, function (err, post) {
+                
+                req.flash('success', 'Comment deleted !!');
                 return res.redirect('back');
             });
         } else {    

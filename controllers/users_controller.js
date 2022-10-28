@@ -42,10 +42,12 @@ module.exports.create = function(req, res){
         if(!user){                      //if user is not found then sign up
             User.create(req.body, function(err, user){
                 if(err){console.log('Error in creating user while signing up!'); return;}
-
+                
+                req.flash('success', 'You registered successfully !!');
                 return res.redirect('/users/login');
             })
         }else{
+            req.flash('error', 'Error in Signup');
             res.redirect('back');
         }
     })
@@ -72,6 +74,7 @@ module.exports.destroySession = function(req, res, next){
 module.exports.update = function(req, res){
      if(req.user.id == req.params.id){
         User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+            req.flash('success', 'User details updated successfully !!')
             return res.redirect('back');
         });
      }else{
