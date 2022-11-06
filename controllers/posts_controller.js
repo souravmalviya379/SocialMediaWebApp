@@ -3,11 +3,20 @@ const Comment = require('../models/comment');
 
 module.exports.create = async function (req, res) {
     try {
-        await Post.create({
+        let post = await Post.create({
             content: req.body.content,
             user: req.user._id
         });
-
+        post = await post.populate('user');
+        if(req.xhr){     //checking if the request is of type ajax
+            return res.status(200).json({
+                data: {
+                    post: post
+                },
+                message: 'Post Created !'
+            })
+        }
+        
         req.flash('success', 'Post published!');
         return res.redirect('back');
     } 
@@ -21,15 +30,28 @@ module.exports.create = async function (req, res) {
 module.exports.destroy = async function (req, res) {
 
     try {
-        let post = await Post.findById(req.param.id);
-
+        // console.log(req.user.id)
+        let post_id = req.params.id;
+        let post = await Post.findById(post_id);
+        
         if (post.user == req.user.id) {
+            // console.log(post)
             post.remove();
-            await Comment.deleteMany({ post: req.params.id });
+            await Comment.deleteMany({ post: post_id });
+
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        post_id
+                    },
+                    message: 'Post deleted !'
+                })
+            }
 
             req.flash('success', 'Post and associated comments deleted!');
             return res.redirect('back');
-        } else {
+        } 
+            else {
             req.flash('error', 'You cannot delete this post')
             return res.redirect('back');
         }
