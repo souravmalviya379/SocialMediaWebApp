@@ -8,6 +8,7 @@ module.exports.create = async function (req, res) {
             user: req.user._id
         });
         post = await post.populate('user');
+        
         if(req.xhr){     //checking if the request is of type ajax
             return res.status(200).json({
                 data: {
