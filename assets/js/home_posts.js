@@ -1,4 +1,4 @@
-{
+
    //method to submit form data for new post using ajax
    let createPost = function () {
       let newPostForm = $('#new-post-form');
@@ -69,7 +69,4 @@
       })
       
    }
-
-
    createPost();
-}

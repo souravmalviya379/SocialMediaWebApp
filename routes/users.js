@@ -18,4 +18,9 @@ router.post('/create_session', passport.authenticate(
     'local', 
     {failureRedirect: '/users/login'}
 ), usersController.create_session);
+
+//google will automatically recognize this request
+router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/users/login'}), usersController.create_session);
+
 module.exports = router;

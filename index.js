@@ -1,5 +1,8 @@
 const express = require('express');
+const env = require('./config/environment');
+const logger = require('morgan');
 const app = express();
+require('./config/view-helpers')(app);
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
@@ -7,24 +10,31 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const passportJWT = require('./config/passport-jwt-strategy');
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
 const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware')
 const flash = require('connect-flash');
 const flashMiddleware = require('./config/flash_middleware');
+const path = require('path');
 
 app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
+    src: path.join(__dirname, env.asset_path, 'scss'),
+    dest: path.join(__dirname, env.asset_path, 'css'),
     debug: true,
     outputStyle: 'extended',
-    prefix: '/css'
+    prefix: '/css' 
 }));
-app.use(express.urlencoded());
+
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
-app.use(express.static('./assets'));
-//make the uploads path available to the browser
+app.use(express.static(path.join(__dirname ,env.asset_path)));
+//make the uploads path available to the browser    
 app.use('/uploads', express.static('__dirname'+'/uploads')); 
+
+app.use(logger(env.morgan.mode, env.morgan.options))
+
 app.use(expressLayouts);
 //extract style ad scripts from sub pages of layout
 app.set('layout extractStyles', true);
@@ -39,7 +49,7 @@ app.set('views', './views');
 app.use(session({
     name: 'SocialApp',
     //TODO change in secret before deployment in production mode
-    secret: 'blahsomething',
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {

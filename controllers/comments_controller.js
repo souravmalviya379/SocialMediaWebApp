@@ -1,5 +1,6 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
+const commentsMailer = require('../mailers/comments_mailer');
 
 module.exports.create = async function (req, res) {
     try {
@@ -14,6 +15,18 @@ module.exports.create = async function (req, res) {
 
             post.comments.push(comment);
             post.save();        //it is necessary to tell the mongodb to save the changes
+            
+            comment = await comment.populate('user');
+            commentsMailer.newComment(comment);
+
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        comment: comment
+                    }, 
+                    message: 'Comment created!'
+                })
+            }
 
             req.flash('success', 'Comment added !!');
             return res.redirect('/');
